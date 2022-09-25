@@ -1,24 +1,34 @@
 #include <iostream>
 #include <math.h>
 #include <string>
-
+#include <my_math.hpp>
 using namespace std;
 
-float distance(float x1, float x2)
-{
-	return sqrt(pow(x1-x2,2));
-}
 
-float LJ_potential(float dist, float epsilon, float sigma)
-{
-	return 4*epsilon*(pow(sigma/dist,12)-pow(sigma/dist,6));
-}
+class Atom {
+  public:     
+	int el;
+    float x;        
+    float v_x;
+
+	Atom(int aEl, float aX, float aV_x){
+		el = aEl;
+		x = aX;
+		v_x = aV_x;
+	}
+};
+
+
+
+
 
 int main()
 {
-	for (int i=2; i < 10; i++){
-        cout << LJ_potential(distance(0,i),2.0,3.5) << endl;
-    }
+	Atom atom1(1, 1.2,0);
+	cout << atom1.x;
+	// for (int i=2; i < 10; i++){
+        // cout << LJ_potential(distance(0,i),2.0,3.5) << endl;
+    // }
 	return 0;
 }
 
