@@ -1,55 +1,41 @@
 #include <iostream>
 #include <math.h>
 #include <string>
-#include <my_math.hpp>
+
+#include <MD.hpp>
 using namespace std;
 
 
-class Atom {
-  public:     
-	int el;
-    float x;        
-    float v_x;
-
-	Atom(int aEl, float aX, float aV_x){
-		el = aEl;
-		x = aX;
-		v_x = aV_x;
-	}
-};
-
-float LJ_potential(Atom& atom1, Atom& atom2, float epsilon, float sigma)
-{
-	float dist = sqrt(pow(atom1.x - atom2.x,2));
-	float energy = 4*epsilon*(pow(sigma/dist,12)-pow(sigma/dist,6));
-	float force = 48*epsilon*(pow(sigma,12)/pow(dist,13)-0.5*pow(sigma,6)/pow(dist,7));
-	return energy;
-}
-
-void verlet(Atom atom1, float vel, float dt = 0.1)
-{
-	int step = 0;
-	float pred_x = atom1.x - 0.1;
-	float force=2.0;
-	float xx;
-	float vi;
-
-	while (step < 10){
-		cout << atom1.x << endl;
-		force = 1.0;
-		xx = 2*atom1.x - pred_x + dt*dt*2*force;
-		vi = (xx-pred_x)/(2*dt);
-		pred_x = atom1.x;
-		atom1.x = xx;
-		step++;
-	}
-	
-}
-
 int main()
 {
-	Atom atom1(1, 1.2,0);
-	verlet(atom1,1.2,0.1);
+	
+	
+	Atom atom1(1, 2.2, 1.0, 1.3, 0.2, 0.5, -0.1);
+	cout << atom1.y << endl;
+	Atom molecule[3] =
+	{	
+		{1, 2.2, 1.0, 1.3, 0.2, 0.5, -0.1},
+		{1, 0.2, -1.0, -1.2, 0.5, -0.1, 0.2},
+		{1, 0.5, 0.5, 1.2, -0.1, -0.2,-0.1},
+	};
+	int ii = 0;
+	print_coord(molecule,3);
+	while (ii < 10)
+	{
+		cout  << "3" << endl << "step " << ii << endl;
+		verlet_system(molecule, 3);
+		print_coord(molecule, 3);
+		ii++;
+	}
+	
+	/*
+	for (int i = 0; i < 3; i++)
+	{
+		cout << molecule[i].z << endl;
+	}
+	//Atom atom1(1, 1.2,0);
+	// verlet(atom1,1.2,0.1);
+	*/
 	return 0;
 }
 
