@@ -13,6 +13,8 @@ atom1 = atom(0.5,0.0,0.0)
 atom2 = atom(0.0,0.0,0.0)
 
 
+
+
 def LJ_energy(atom1,atom2,epsilon,sigma):
     #distance = np.sqrt(np.power(atom1.x-atom2.x,2)+np.power(atom1.y-atom2.y,2)+np.power(atom1.z-atom2.z,2))
     distance =atom1.x - atom2.x
