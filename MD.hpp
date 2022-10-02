@@ -57,20 +57,6 @@ void verlet_system(Atom* molecule, int nAt, float dt = 1.0)
 	float pred_x, pred_y, pred_z, force_x, force_y, force_z;
 	float new_x, new_y, new_z;
 	float vx, vy, vz;
-	/*
-	float pred_x;// = atom1.x - atom1.v_x;
-	float pred_y;// = atom1.y - atom1.v_y;
-	float pred_z;// = atom1.z - atom1.v_z;
-	float force_x;//=2.0;
-	float force_y;//=2.0;
-	float force_z;//=2.0;
-	float new_x;
-	float new_y;
-	float new_z;
-	float vx;
-	float vy;
-	float vz;
-	*/
 	for (int i = 0; i < nAt; i++)
 	{
 		force_x=0.2;
