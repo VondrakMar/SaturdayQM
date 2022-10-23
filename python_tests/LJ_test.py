@@ -1,18 +1,53 @@
 import copy
+from ase import Atoms
 import numpy as np
 import matplotlib.pyplot as plt
+from ase.build import molecule
 
+voda = molecule("H2O")
 
+MD = Atoms()
+mols = []
+
+def verlet(molecule):
+    nAt = len(molecule)
+    temp_pos = molecule.get_positions()
+    mols.append(voda)
+	for i in range(nAt):
+		pred_x = atom1.x - 0.2
+		pred_y = molecule[i].y - molecule[i].v_y	
+		pred_z = molecule[i].z - molecule[i].v_z
+		for (int j = 0; j < nAt; j++){
+			LJ_f(molecule, nAt, 0.5,0.1);
+			new_x = 2*molecule[i].x - pred_x + dt*dt*2*molecule[i].f_x;
+			vx = (new_x-pred_x)/(2*dt);
+			pred_x = molecule[i].x;
+			molecule[i].x = new_x;
+			new_y = 2*molecule[i].y - pred_y + dt*dt*2*molecule[i].f_y;
+			vy = (new_y-pred_y)/(2*dt);
+			pred_y = molecule[i].y;
+			molecule[i].y = new_y;
+			new_y = 2*molecule[i].z - pred_z + dt*dt*2*molecule[i].f_z;
+			vz = (new_z-pred_z)/(2*dt);
+			pred_z = molecule[i].z;
+			molecule[i].z = new_z;
+		}
+    '''
+
+verlet(voda)
+
+'''
 class atom():
-    def __init__(self,x,y,z):
+    def __init__(self,x,y,z,v_x,v_y,v_z):
         self.x = x
         self.y = y
         self.z = z
+        self.v_x = v_x
+        self.v_y = v_y
+        self.v_z = v_z
 
 atom1 = atom(0.5,0.0,0.0)
 atom2 = atom(0.0,0.0,0.0)
-
-
 
 
 def LJ_energy(atom1,atom2,epsilon,sigma):
@@ -49,3 +84,4 @@ plt.plot(distances,LJ_forces)
 plt.plot(distances,LJ_a)
 plt.ylim((-3,3))
 plt.show()
+'''

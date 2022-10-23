@@ -11,13 +11,14 @@ int main()
 	
 	
 	Atom atom1(1, 2.2, 1.0, 1.3, 0.2, 0.5, -0.1);
-	cout << atom1.y << endl;
+	//cout << atom1.y << endl;
 	Atom molecule[3] =
 	{	
 		{1, 2.2, 1.0, 1.3, 0.2, 0.5, -0.1},
 		{1, 0.2, -1.0, -1.2, 0.5, -0.1, 0.2},
 		{1, 0.5, 0.5, 1.2, -0.1, -0.2,-0.1},
 	};
+
 	int ii = 0;
 	print_coord(molecule,3);
 	while (ii < 10)
@@ -27,7 +28,7 @@ int main()
 		print_coord(molecule, 3);
 		ii++;
 	}
-	
+	/*
 	/*
 	for (int i = 0; i < 3; i++)
 	{
